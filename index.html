@@ -316,14 +316,18 @@
 
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
-            data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#f1f5f9' }] },
-            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#4361ee' }] },
+            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+            }
         });
 
         new Chart(document.getElementById('sanctionsChart'), {
-            type: 'line',
-            data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true }] },
-            options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            type: 'bar',
+            data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, backgroundColor: '#ef4444' }] },
+            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+            }
         });
 
         // Tabs & Selection

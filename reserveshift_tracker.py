@@ -144,9 +144,10 @@ with tab1:
         avg_change = gold_df['Monthly Change'].mean()
         st.metric("Average Monthly Change", f"{avg_change:.2f}%", "Gold demand trend")
     
-    fig = px.bar(gold_df, x='Country', y='Gold Tonnes', color='Monthly Change',
+    fig = px.bar(gold_df, y='Country', x='Gold Tonnes', color='Monthly Change',
+                 orientation='h',
                  title="Gold Reserves by Country (Dec 2025)",
-                 labels={'Gold Tonnes': 'Tonnes', 'Monthly Change': '% Change'},
+                 labels={'Gold Tonnes': 'Tonnes', 'Monthly Change': '% Change', 'Country': 'Country'},
                  color_continuous_scale='Viridis')
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Data Source: World Gold Council via IMF IFS")
@@ -185,7 +186,8 @@ with tab4:
     with col1:
         st.subheader("SDN Listings (Sanctions Frequency)")
         sanc_df = fetch_sanctions_data()
-        fig1 = px.line(sanc_df, x='Year', y='Count', markers=True, title="Total OFAC SDN Listings")
+        fig1 = px.bar(sanc_df, y='Year', x='Count', orientation='h', title="Total OFAC SDN Listings")
+        fig1.update_layout(yaxis=dict(type='category', autorange='reversed'))
         st.plotly_chart(fig1, use_container_width=True)
         
     with col2:
