@@ -134,14 +134,22 @@
         }
 
         .secondary-stats .card {
-            height: 200px;
-            padding: 1rem;
+            height: 160px;
+            padding: 0.75rem;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        .secondary-stats canvas {
-            max-height: 140px;
+        .chart-wrapper {
+            height: 110px;
+            width: 100%;
+            position: relative;
+        }
+
+        .secondary-stats h4 {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
         }
 
         .table-container { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
@@ -230,12 +238,16 @@
                     </div>
                     <div class="secondary-stats">
                         <div class="card">
-                            <h4>Top Gold Holdings</h4>
-                            <canvas id="goldChart"></canvas>
+                            <h4>Top Gold Holdings (Tonnes)</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="goldChart"></canvas>
+                            </div>
                         </div>
                         <div class="card">
-                            <h4>OFAC SDN Listings (2021-2025)</h4>
-                            <canvas id="sanctionsChart"></canvas>
+                            <h4>OFAC SDN Listings (2,100+)</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="sanctionsChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -334,16 +346,30 @@
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
             data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#4361ee' }] },
-            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
-                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+            options: { 
+                indexAxis: 'y', 
+                maintainAspectRatio: false, 
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { 
+                    x: { display: false, grid: { display: false } }, 
+                    y: { grid: { display: false }, ticks: { font: { size: 9 } } } 
+                }
             }
         });
 
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'bar',
             data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, backgroundColor: '#ef4444' }] },
-            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
-                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+            options: { 
+                indexAxis: 'y', 
+                maintainAspectRatio: false, 
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { 
+                    x: { display: false, grid: { display: false } }, 
+                    y: { grid: { display: false }, ticks: { font: { size: 9 } } } 
+                }
             }
         });
 
