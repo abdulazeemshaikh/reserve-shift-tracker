@@ -347,7 +347,13 @@
 
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
-            data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#4361ee' }] },
+            data: { labels: goldHoldings.names, datasets: [{ 
+                label: 'Tonnes', 
+                data: goldHoldings.tonnes, 
+                backgroundColor: '#4361ee',
+                barThickness: 12,
+                maxBarThickness: 12
+            }] },
             options: { 
                 indexAxis: 'y', 
                 maintainAspectRatio: false, 
@@ -362,7 +368,13 @@
 
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'bar',
-            data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, backgroundColor: '#ef4444' }] },
+            data: { labels: sanctionsHistory.labels, datasets: [{ 
+                label: 'SDN Listings', 
+                data: sanctionsHistory.counts, 
+                backgroundColor: '#ef4444',
+                barThickness: 12,
+                maxBarThickness: 12
+            }] },
             options: { 
                 indexAxis: 'y', 
                 maintainAspectRatio: false, 
