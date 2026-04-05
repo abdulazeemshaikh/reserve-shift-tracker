@@ -218,13 +218,13 @@
                         <canvas id="reserveChart"></canvas>
                     </div>
                     <div class="secondary-stats">
-                        <div class="card" style="height: 320px;">
+                        <div class="card" style="height: 200px; padding: 1rem;">
                             <h4>Top Gold Holdings</h4>
-                            <div style="height: 250px;"><canvas id="goldChart"></canvas></div>
+                            <div style="height: 140px;"><canvas id="goldChart"></canvas></div>
                         </div>
-                        <div class="card" style="height: 320px;">
+                        <div class="card" style="height: 200px; padding: 1rem;">
                             <h4>OFAC SDN Listings (2021-2025)</h4>
-                            <div style="height: 250px;"><canvas id="sanctionsChart"></canvas></div>
+                            <div style="height: 140px;"><canvas id="sanctionsChart"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -323,7 +323,7 @@
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
             data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#4361ee' }] },
-            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+            options: { animation: false, indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
                 scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
             }
         });
@@ -331,7 +331,7 @@
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'bar',
             data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, backgroundColor: '#ef4444' }] },
-            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+            options: { animation: false, indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
                 scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
             }
         });
