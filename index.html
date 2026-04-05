@@ -133,27 +133,6 @@
             gap: 1.5rem;
         }
 
-        .secondary-stats .card {
-            height: 150px !important;
-            max-height: 150px !important;
-            padding: 0.75rem !important;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden !important;
-        }
-
-        .chart-wrapper {
-            height: 100px !important;
-            width: 100% !important;
-            position: relative;
-            overflow: hidden !important;
-        }
-
-        .chart-wrapper canvas {
-            height: 100px !important;
-            width: 100% !important;
-        }
-
         .table-container { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
         table { width: 100%; border-collapse: collapse; text-align: left; }
         th { background: #f1f5f9; padding: 1rem 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
@@ -239,17 +218,13 @@
                         <canvas id="reserveChart"></canvas>
                     </div>
                     <div class="secondary-stats">
-                        <div class="card">
-                            <h4>Top Gold Holdings (Tonnes)</h4>
-                            <div class="chart-wrapper">
-                                <canvas id="goldChart"></canvas>
-                            </div>
+                        <div class="card" style="height: 320px;">
+                            <h4>Top Gold Holdings</h4>
+                            <div style="height: 250px;"><canvas id="goldChart"></canvas></div>
                         </div>
-                        <div class="card">
-                            <h4>OFAC SDN Listings (2,100+)</h4>
-                            <div class="chart-wrapper">
-                                <canvas id="sanctionsChart"></canvas>
-                            </div>
+                        <div class="card" style="height: 320px;">
+                            <h4>OFAC SDN Listings (2021-2025)</h4>
+                            <div style="height: 250px;"><canvas id="sanctionsChart"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -347,43 +322,17 @@
 
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
-            data: { labels: goldHoldings.names, datasets: [{ 
-                label: 'Tonnes', 
-                data: goldHoldings.tonnes, 
-                backgroundColor: '#4361ee',
-                barThickness: 12,
-                maxBarThickness: 12
-            }] },
-            options: { 
-                indexAxis: 'y', 
-                maintainAspectRatio: false, 
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    x: { display: false, grid: { display: false } }, 
-                    y: { grid: { display: false }, ticks: { font: { size: 9 } } } 
-                }
+            data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#4361ee' }] },
+            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
             }
         });
 
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'bar',
-            data: { labels: sanctionsHistory.labels, datasets: [{ 
-                label: 'SDN Listings', 
-                data: sanctionsHistory.counts, 
-                backgroundColor: '#ef4444',
-                barThickness: 12,
-                maxBarThickness: 12
-            }] },
-            options: { 
-                indexAxis: 'y', 
-                maintainAspectRatio: false, 
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    x: { display: false, grid: { display: false } }, 
-                    y: { grid: { display: false }, ticks: { font: { size: 9 } } } 
-                }
+            data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, backgroundColor: '#ef4444' }] },
+            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
             }
         });
 

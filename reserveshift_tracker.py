@@ -149,7 +149,7 @@ with tab1:
                  title="Gold Reserves by Country (Dec 2025)",
                  labels={'Gold Tonnes': 'Tonnes', 'Monthly Change': '% Change', 'Country': 'Country'},
                  color_continuous_scale='Viridis')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, height=350)
     st.caption("Data Source: World Gold Council via IMF IFS")
 
 with tab2:
@@ -188,13 +188,13 @@ with tab4:
         sanc_df = fetch_sanctions_data()
         fig1 = px.bar(sanc_df, y='Year', x='Count', orientation='h', title="Total OFAC SDN Listings")
         fig1.update_layout(yaxis=dict(type='category', autorange='reversed'))
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, use_container_width=True, height=300)
         
     with col2:
         st.subheader("Penalty Cases (Enforcement)")
         enf_df = fetch_sanctions_enforcement_data()
         fig2 = px.bar(enf_df, x='Year', y='Count', title="OFAC Enforcement Penalty Cases")
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, use_container_width=True, height=300)
     st.caption("Data Source: OFAC SDN List & Enforcement Actions")
 
 with tab5:
