@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReserveShift | Premium De-dollarization Intelligence</title>
-    <meta name="description" content="Advanced monitoring of global reserve shifts and Dollar Dependency Index (DDI).">
+    <title>ReserveShift | Intelligence Dashboard</title>
     
     <!-- Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,26 +24,17 @@
             
             --bg-body: #F9FAFB;
             --bg-card: #FFFFFF;
-            --bg-sidebar: #FFFFFF;
             
             --text-heading: #111827;
             --text-body: #4B5563;
             --text-muted: #9CA3AF;
             
             --border-light: #F3F4F6;
-            --border-menu: #E5E7EB;
-            
-            --radius-main: 16px;
-            --radius-btn: 10px;
-            
+            --radius-main: 24px;
             --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-            --shadow-hard: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-            
-            --sidebar-width: 280px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Essential Resets */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
@@ -53,8 +43,9 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-body);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         h1, h2, h3, h4 {
@@ -63,567 +54,294 @@
             letter-spacing: -0.02em;
         }
 
-        /* Layout Architecture */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Premium Sidebar */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--bg-sidebar);
-            border-right: 1px solid var(--border-menu);
-            padding: 2.5rem 1.5rem;
-            position: fixed;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            z-index: 1000;
-            box-shadow: 10px 0 30px -15px rgba(0,0,0,0.03);
-        }
-
-        .brand-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 3.5rem;
-            text-decoration: none;
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .brand-logo {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-            border-radius: 12px;
-            display: flex;
+            border-radius: 14px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
         }
 
-        .brand-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(to bottom right, #111827, #4B5563);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .subtitle { font-size: 1.25rem; color: var(--text-muted); }
 
-        .nav-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            display: block;
-        }
-
-        .nav-group { margin-bottom: 2.5rem; }
-
-        .selector-box {
-            background: var(--bg-body);
-            border: 1.5px solid var(--border-menu);
-            padding: 1rem;
-            border-radius: var(--radius-btn);
-            width: 100%;
-            font-weight: 600;
-            color: var(--text-heading);
-            cursor: pointer;
-            transition: var(--transition);
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-        }
-
-        .selector-box:hover { border-color: var(--brand-primary); }
-
-        .system-status {
-            margin-top: auto;
-            background: rgba(99, 102, 241, 0.05);
-            padding: 1.25rem;
-            border-radius: 14px;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-        }
-
-        .status-dot {
-            width: 8px; height: 8px;
-            background: var(--brand-accent);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            box-shadow: 0 0 8px var(--brand-accent);
-        }
-
-        /* Main Canvas */
-        .main-content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 3rem 4.5rem;
-            max-width: 1600px;
-        }
-
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 3.5rem;
-        }
-
-        .heading-group h1 { font-size: 2.75rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .heading-group p { font-size: 1.1rem; color: var(--text-body); opacity: 0.8; }
-
-        /* KPI Dashboard */
-        .kpi-grid {
+        /* KPI Cluster */
+        .kpi-cluster {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
-        .kpi-card {
+        .card {
             background: var(--bg-card);
             padding: 1.75rem;
             border-radius: var(--radius-main);
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
-        .kpi-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hard); }
+        .kpi-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .kpi-value { font-size: 2.25rem; font-weight: 800; color: var(--text-heading); }
+        .kpi-trend { font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; }
+        .trend-down { color: var(--brand-danger); }
+        .trend-up { color: var(--brand-accent); }
 
-        .kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--brand-primary); opacity: 0.1;
-        }
-
-        .kpi-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-        .kpi-value { font-size: 2rem; font-weight: 800; color: var(--text-heading); }
-        .kpi-trend { font-size: 0.8rem; font-weight: 700; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.25rem; }
-
-        /* Tabs System */
-        .tab-nav {
-            display: flex;
-            gap: 2.5rem;
-            border-bottom: 2px solid var(--border-light);
-            margin-bottom: 2.5rem;
-        }
-
-        .tab-btn {
-            padding: 1rem 0.25rem;
-            background: none;
-            border: none;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover { color: var(--text-heading); }
-        .tab-btn.active { color: var(--brand-primary); }
-        .tab-btn.active::after {
-            content: '';
-            position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px;
-            background: var(--brand-primary); border-radius: 2px;
-        }
-
-        /* Dynamic Views */
-        .chart-layout {
+        /* Dashboard Grid */
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-        }
-
-        .major-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border-light);
-        }
-
-        .minor-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .minor-card {
-            background: var(--bg-card);
-            height: 240px;
-            border-radius: 20px;
-            padding: 1.75rem;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .minor-card h4 { font-size: 1rem; margin-bottom: 1.25rem; color: var(--text-heading); }
-        .chart-wrap { flex: 1; position: relative; }
-
-        /* Tables */
-        .table-wrap {
-            background: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid var(--border-menu);
-            overflow: hidden;
-        }
-
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #F9FAFB; padding: 1.25rem 1.5rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1.5px solid var(--border-menu); }
-        td { padding: 1.5rem; border-bottom: 1px solid var(--border-light); font-weight: 500; font-size: 0.9rem; }
-
-        /* DDI Analytics */
-        .ddi-matrix {
-            display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        .score-display {
-            background: linear-gradient(135deg, #111827, #1F2937);
-            border-radius: 24px;
-            padding: 3rem;
-            color: white;
-            text-align: center;
+        .full-width { grid-column: span 2; }
+
+        .chart-box {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--radius-main);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .chart-header {
+            margin-bottom: 2rem;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .chart-title { font-size: 1.25rem; font-weight: 700; }
+        .chart-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* DDI Widget */
+        .ddi-widget {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
             align-items: center;
         }
 
-        .radial-progress {
-            width: 140px; height: 140px;
+        .ddi-score-circle {
+            width: 160px; height: 160px;
             border-radius: 50%;
-            border: 10px solid rgba(255,255,255,0.05);
+            background: #111827;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            margin-bottom: 2rem;
-            position: relative;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .score-num { font-size: 3rem; font-weight: 800; font-family: 'Outfit'; line-height: 1; }
-        .score-unit { font-size: 0.75rem; opacity: 0.5; font-weight: 700; }
+        .score-val { font-size: 3rem; font-weight: 800; font-family: 'Outfit'; }
+        .score-tag { font-size: 0.7rem; font-weight: 700; opacity: 0.6; }
 
-        .factor-track {
-            height: 10px; background: #F3F4F6; border-radius: 5px;
-            margin-top: 0.75rem; position: relative; overflow: hidden;
+        .factor-list { display: flex; flex-direction: column; gap: 1.25rem; }
+        .factor-row { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .bar-track { height: 8px; background: #F3F4F6; border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; }
+
+        /* Trade Table */
+        .table-wrap {
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
         }
 
-        .factor-bar { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #F9FAFB; padding: 1rem 1.5rem; text-align: left; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border-light); }
+        td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; font-weight: 600; }
 
-        /* Glassmorphism Classes */
-        .glass { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.7); }
-
-        /* Fade Animations */
-        @keyframes reveal { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        @media (max-width: 1280px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; align-items: center; padding: 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--border-menu); }
-            .brand-header { margin-bottom: 0; }
-            .nav-group { margin: 0 0 0 2rem; display: flex; align-items: center; gap: 1rem; }
-            .nav-label, .system-status { display: none; }
-            .main-content { margin-left: 0; padding: 2rem; }
-            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-            .ddi-matrix { grid-template-columns: 1fr; }
+        @media (max-width: 1024px) {
+            .kpi-cluster, .dashboard-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .ddi-widget { grid-template-columns: 1fr; text-align: center; }
+            .ddi-score-circle { margin: 0 auto 2rem; }
         }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate { animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <a href="#" class="brand-header">
-                <div class="brand-logo"><i data-lucide="compass"></i></div>
-                <span class="brand-name">ReserveShift</span>
-            </a>
+    <header class="animate">
+        <div class="brand-logo"><i data-lucide="activity"></i></div>
+        <h1>ReserveShift Intelligence</h1>
+        <p class="subtitle">Global De-dollarization Benchmarking — April 2026</p>
+    </header>
 
-            <div class="nav-group">
-                <span class="nav-label">Analysis Context</span>
-                <select id="countrySelect" class="selector-box">
-                    <option value="China">China</option>
-                    <option value="India">India</option>
-                    <option value="UAE" selected>United Arab Emirates</option>
-                    <option value="USA">United States</option>
-                </select>
-            </div>
+    <div class="kpi-cluster animate" style="animation-delay: 0.1s;">
+        <div class="card">
+            <div class="kpi-label"><i data-lucide="bar-chart"></i> Global USD Share</div>
+            <div class="kpi-value">56.9%</div>
+            <div class="kpi-trend trend-down"><i data-lucide="trending-down"></i> -0.8% YoY</div>
+        </div>
+        <div class="card">
+            <div class="kpi-label"><i data-lucide="coins"></i> Top Gold Holder</div>
+            <div class="kpi-value">8.1Kt</div>
+            <div class="kpi-trend trend-up"><i data-lucide="trending-up"></i> +0.2% MoM</div>
+        </div>
+        <div class="card">
+            <div class="kpi-label"><i data-lucide="alert-octagon"></i> Active Sanctions</div>
+            <div class="kpi-value">2,100</div>
+            <div class="kpi-trend trend-up">High Intensity</div>
+        </div>
+        <div class="card">
+            <div class="kpi-label"><i data-lucide="link"></i> mBridge Platform</div>
+            <div class="kpi-value">Live</div>
+            <div class="kpi-trend trend-up">Transaction Ready</div>
+        </div>
+    </div>
 
-        </aside>
-
-        <!-- Main Dashboard Area -->
-        <main class="main-content">
-            <header class="header-row">
-                <div class="heading-group">
-                    <p>Global Intelligence Dashboard</p>
-                    <h1>Strategic Reserve Monitor</h1>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">CURRENT EPOCH</div>
-                    <div style="font-size: 1.1rem; font-weight: 600; font-family: 'Outfit';">APRIL 5, 2026</div>
-                </div>
-            </header>
-
-            <!-- Key Performance Indices -->
-            <div class="kpi-grid reveal">
-                <div class="kpi-card">
-                    <div class="kpi-label"><i data-lucide="bar-chart-3" style="width: 16px;"></i> Global USD Share</div>
-                    <div class="kpi-value">56.9%</div>
-                    <div class="kpi-trend trend-down"><i data-lucide="arrow-down-right" style="width: 14px;"></i> -0.8% YoY</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label"><i data-lucide="gem" style="width: 16px; color: #F59E0B;"></i> Peak Gold Holder</div>
-                    <div class="kpi-value">8.1K<span style="font-size: 1rem; opacity: 0.5;">t</span></div>
-                    <div class="kpi-trend"><i data-lucide="shield-check" style="width: 14px; color: var(--brand-accent);"></i> Stable</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label"><i data-lucide="flame" style="width: 16px; color: #EF4444;"></i> Active Sanctions</div>
-                    <div class="kpi-value">2,100</div>
-                    <div class="kpi-trend trend-up"><i data-lucide="arrow-up-right" style="width: 14px;"></i> Intensive</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label"><i data-lucide="link-2" style="width: 16px; color: var(--brand-primary);"></i> mBridge Status</div>
-                    <div class="kpi-value">Live</div>
-                    <div class="kpi-trend trend-up"><i data-lucide="check-circle" style="width: 14px;"></i> Verified</div>
+    <div class="dashboard-grid animate" style="animation-delay: 0.2s;">
+        <!-- Primary Reserve Trend -->
+        <div class="chart-box full-width">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Currency Composition of Global Reserves</h3>
+                    <p class="chart-desc">Macro trend analysis based on IMF COFER (2025Q1 - 2025Q3)</p>
                 </div>
             </div>
+            <div style="height: 400px;"><canvas id="reserveChart"></canvas></div>
+        </div>
 
-            <!-- Tab Navigation -->
-            <nav class="tab-nav reveal" style="animation-delay: 0.1s;">
-                <button class="tab-btn active" onclick="switchTab('analytics')">Market Analytics</button>
-                <button class="tab-btn" onclick="switchTab('ddi')">Dependency scoring</button>
-                <button class="tab-btn" onclick="switchTab('trade')">Bilateral trade flows</button>
-            </nav>
-
-            <!-- Context Views -->
-            <div id="analytics-view" class="view-panel reveal" style="animation-delay: 0.2s;">
-                <div class="chart-layout">
-                    <div class="major-card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 2rem;">
-                            <div>
-                                <h3>Reserve Currency Composition</h3>
-                                <p style="font-size: 0.85rem; color: var(--text-muted);">Long-term shift in global foreign exchange holdings</p>
-                            </div>
-                            <div style="display: flex; gap: 1rem;">
-                                <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700;"><span style="width: 10px; height: 10px; border-radius: 2px; background: var(--brand-primary);"></span> USD</div>
-                                <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700;"><span style="width: 10px; height: 10px; border-radius: 2px; background: var(--brand-secondary);"></span> CNY</div>
-                            </div>
-                        </div>
-                        <div style="height: 400px;"><canvas id="reserveChart"></canvas></div>
+        <!-- DDI Matrix -->
+        <div class="chart-box">
+            <h3 class="chart-title" style="margin-bottom: 2rem;">Dependency scoring: UAE Profile</h3>
+            <div class="ddi-widget">
+                <div class="ddi-score-circle">
+                    <span class="score-val">15.4</span>
+                    <span class="score-tag">INDEX POINTS</span>
+                </div>
+                <div class="factor-list">
+                    <div>
+                        <div class="factor-row"><span>Reserve Share</span><span>0.02 / 50</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width: 1%; background: var(--brand-primary);"></div></div>
                     </div>
-                    
-                    <div class="minor-grid">
-                        <div class="minor-card">
-                            <h4>Top Gold Holdings (Tonnes)</h4>
-                            <div class="chart-wrap"><canvas id="goldChart"></canvas></div>
-                        </div>
-                        <div class="minor-card">
-                            <h4>OFAC SDN Evolution (2021-2025)</h4>
-                            <div class="chart-wrap"><canvas id="sanctionsChart"></canvas></div>
-                        </div>
+                    <div>
+                        <div class="factor-row"><span>Gold Holdings</span><span>15.4 / 25</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width: 62%; background: var(--brand-warning);"></div></div>
+                    </div>
+                    <div>
+                        <div class="factor-row"><span>US Sanctions</span><span>0.15 / 15</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width: 1%; background: var(--brand-danger);"></div></div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="ddi-view" class="view-panel" style="display: none;">
-                <div class="ddi-matrix">
-                    <div class="score-display">
-                        <div class="radial-progress">
-                            <span class="score-num" id="ddiScore">15.4</span>
-                            <span class="score-unit">OF 100</span>
-                        </div>
-                        <h2 id="countryName" style="color: white; margin-bottom: 0.5rem;">United Arab Emirates</h2>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">Overall Vulnerability Profile</p>
-                    </div>
-                    
-                    <div class="major-card">
-                        <h3 style="margin-bottom: 2rem;">Factor Vulnerability Breakdown</h3>
-                        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
-                            <div class="factor-row">
-                                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem;">
-                                    <span>Reserve Share Proximity</span>
-                                    <span id="f1">0.02 / 50</span>
-                                </div>
-                                <div class="factor-track"><div id="b1" class="factor-bar" style="background: var(--brand-primary); width: 1%;"></div></div>
-                            </div>
-                            <div class="factor-row">
-                                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem;">
-                                    <span>Gold Diversification Index</span>
-                                    <span id="f2">15.4 / 25</span>
-                                </div>
-                                <div class="factor-track"><div id="b2" class="factor-bar" style="background: var(--brand-warning); width: 62%;"></div></div>
-                            </div>
-                            <div class="factor-row">
-                                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem;">
-                                    <span>OFAC Pressure Coefficient</span>
-                                    <span id="f3">0.15 / 15</span>
-                                </div>
-                                <div class="factor-track"><div id="b3" class="factor-bar" style="background: var(--brand-danger); width: 1%;"></div></div>
-                            </div>
-                            <div class="factor-row">
-                                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem;">
-                                    <span>Digital Sovereign Integration (mCBDC)</span>
-                                    <span id="f4">0.0 / 10</span>
-                                </div>
-                                <div class="factor-track"><div id="b4" class="factor-bar" style="background: var(--brand-accent); width: 0%;"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Gold & Sanctions Summary -->
+        <div class="chart-box">
+            <h3 class="chart-title" style="margin-bottom: 2rem;">Regional Strategic Indicators</h3>
+            <div style="display: grid; gap: 2rem;">
+                <div style="height: 120px;"><canvas id="goldChart"></canvas></div>
+                <div style="height: 120px;"><canvas id="sanctionsChart"></canvas></div>
             </div>
+        </div>
 
-            <div id="trade-view" class="view-panel" style="display: none;">
-                <div class="table-wrap reveal">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Epoch</th>
-                                <th>Strategic Entities</th>
-                                <th>Currency Mechanics</th>
-                                <th>Volume Impact</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tradeTable">
-                            <tr><td>Nov 2025</td><td>UAE ⇄ China</td><td>CNY / AED</td><td><span style="font-weight: 700; color: var(--brand-primary);">32%</span> of trade</td></tr>
-                            <tr><td>Dec 2025</td><td>India ⇄ UAE</td><td>INR / AED</td><td><span style="font-weight: 700; color: var(--brand-primary);">18%</span> of trade</td></tr>
-                            <tr><td>Jan 2026</td><td>India ⇄ Russia</td><td>INR / CNY</td><td><span style="font-weight: 700; color: var(--brand-primary);">15%</span> of trade</td></tr>
-                            <tr><td>Feb 2026</td><td>India ⇄ Bangladesh</td><td>INR / BDT</td><td><span style="font-weight: 700; color: var(--brand-primary);">8%</span> of trade</td></tr>
-                            <tr><td>Mar 2026</td><td>Brazil ⇄ China</td><td>BRL / CNY</td><td><span style="font-weight: 700; color: var(--brand-primary);">25%</span> of trade</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+        <!-- Trade Settlement Flows -->
+        <div class="chart-box full-width">
+            <h3 class="chart-title" style="margin-bottom: 2rem;">Bilateral Trade Settlement (Non-USD Flows)</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Epoch</th>
+                            <th>Strategic Corridor</th>
+                            <th>Mechanics</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nov 2025</td><td>UAE ⇄ China</td><td>CNY / AED</td><td>32% of total trade</td></tr>
+                        <tr><td>Dec 2025</td><td>India ⇄ UAE</td><td>INR / AED</td><td>18% of total trade</td></tr>
+                        <tr><td>Jan 2026</td><td>India ⇄ Russia</td><td>INR / CNY</td><td>15% of total trade</td></tr>
+                        <tr><td>Mar 2026</td><td>Brazil ⇄ China</td><td>BRL / CNY</td><td>25% of total trade</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-        </main>
+        </div>
     </div>
 
     <script>
         lucide.createIcons();
 
-        // High-fidelity Static Data
-        const chartColors = {
-            primary: '#6366F1',
-            secondary: '#EC4899',
-            grid: '#F3F4F6'
-        };
-
-        const globalData = {
+        // Data from scientific update
+        const reserveData = {
             labels: ['2025Q1', '2025Q2', '2025Q3'],
             usd: [57.79, 57.08, 56.92],
-            cny: [2.00, 1.99, 1.93],
-            gold: {
-                names: ['USA', 'Germany', 'Italy', 'France', 'Russia', 'China'],
-                tonnes: [8133.5, 3351.5, 2451.8, 2436.9, 2332.8, 2264.3]
-            },
-            sanctions: {
-                labels: ['2021', '2022', '2023', '2024', '2025'],
-                counts: [900, 1200, 1500, 1800, 2100]
-            }
+            cny: [2.00, 1.99, 1.93]
         };
 
-        const ddiConfig = {
-            'UAE': { ddi: 15.4, name: 'United Arab Emirates', r: 0.02, g: 15.4, s: 0.15, m: 0.0 },
-            'China': { ddi: 28.2, name: 'China', r: 1.5, g: 18.0, s: 3.7, m: 5.0 },
-            'India': { ddi: 22.1, name: 'India', r: 0.1, g: 12.0, s: 0.4, m: 9.6 },
-            'USA': { ddi: 100.0, name: 'United States', r: 50.0, g: 25.0, s: 15.0, m: 10.0 }
+        const goldHoldings = {
+            names: ['USA', 'Germany', 'Italy', 'France', 'Russia', 'China'],
+            tonnes: [8133.5, 3351.5, 2451.8, 2436.9, 2332.8, 2264.3]
         };
 
-        // Render Reserve Trend
+        const sanctionsHistory = {
+            labels: ['2021', '2022', '2023', '2024', '2025'],
+            counts: [900, 1200, 1500, 1800, 2100]
+        };
+
+        // Charts
         const resCtx = document.getElementById('reserveChart').getContext('2d');
         new Chart(resCtx, {
             type: 'line',
             data: {
-                labels: globalData.labels,
+                labels: reserveData.labels,
                 datasets: [
-                    { label: 'USD %', data: globalData.usd, borderColor: chartColors.primary, backgroundColor: 'rgba(99, 102, 241, 0.05)', fill: true, tension: 0.4, borderWidth: 3 },
-                    { label: 'CNY %', data: globalData.cny, borderColor: chartColors.secondary, borderDash: [5,5], fill: false, tension: 0.4, borderWidth: 2 }
+                    { label: 'USD %', data: reserveData.usd, borderColor: '#6366F1', backgroundColor: 'rgba(99, 102, 241, 0.05)', fill: true, tension: 0.4, borderWidth: 4 },
+                    { label: 'CNY %', data: reserveData.cny, borderColor: '#EC4899', fill: false, tension: 0.4, borderDash: [5,5] }
                 ]
             },
             options: {
                 maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
                 scales: { 
-                    y: { min: 55, max: 60, grid: { color: chartColors.grid }, border: { display: false } },
+                    y: { min: 55, max: 60, grid: { color: '#F3F4F6' }, border: { display: false } },
                     x: { grid: { display: false }, border: { display: false } }
                 }
             }
         });
 
-        // Render Horizontal Gold
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
-            data: { labels: globalData.gold.names, datasets: [{ data: globalData.gold.tonnes, backgroundColor: chartColors.primary, borderRadius: 6 }] },
+            data: { labels: goldHoldings.names, datasets: [{ data: goldHoldings.tonnes, backgroundColor: '#6366F1', borderRadius: 4 }] },
             options: {
+                animation: false,
                 indexAxis: 'y',
                 maintainAspectRatio: false,
-                animation: false,
                 plugins: { legend: { display: false } },
                 scales: { 
-                    x: { display: false, grid: { display: false } },
+                    x: { display: false }, 
                     y: { grid: { display: false }, border: { display: false }, ticks: { font: { weight: 600 } } } 
                 }
             }
         });
 
-        // Render Horizontal Sanctions
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'bar',
-            data: { labels: globalData.sanctions.labels, datasets: [{ data: globalData.sanctions.counts, backgroundColor: '#EF4444', borderRadius: 6 }] },
+            data: { labels: sanctionsHistory.labels, datasets: [{ data: sanctionsHistory.counts, backgroundColor: '#EF4444', borderRadius: 4 }] },
             options: {
+                animation: false,
                 indexAxis: 'y',
                 maintainAspectRatio: false,
-                animation: false,
                 plugins: { legend: { display: false } },
                 scales: { 
-                    x: { display: false, grid: { display: false } },
+                    x: { display: false }, 
                     y: { grid: { display: false }, border: { display: false }, ticks: { font: { weight: 600 } } } 
                 }
             }
         });
-
-        // Navigation Engine
-        function switchTab(view) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            document.querySelectorAll('.view-panel').forEach(v => v.style.display = 'none');
-            const target = document.getElementById(view + '-view');
-            target.style.display = 'block';
-            target.classList.add('reveal');
-        }
-
-        // Selection Engine
-        document.getElementById('countrySelect').addEventListener('change', (e) => {
-            const data = ddiConfig[e.target.value];
-            document.getElementById('ddiScore').innerText = data.ddi.toFixed(1);
-            document.getElementById('countryName').innerText = data.name;
-            
-            updateFactor(1, data.r, 50);
-            updateFactor(2, data.g, 25);
-            updateFactor(3, data.s, 15);
-            updateFactor(4, data.m, 10);
-        });
-
-        function updateFactor(id, val, max) {
-            const pct = (val / max) * 100;
-            document.getElementById('f'+id).innerText = val.toFixed(2) + ' / ' + max;
-            document.getElementById('b'+id).style.width = pct + '%';
-        }
-
     </script>
 </body>
 </html>
