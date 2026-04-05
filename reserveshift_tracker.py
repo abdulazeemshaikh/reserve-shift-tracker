@@ -230,4 +230,4 @@ with tab5:
 
 # Footer
 st.markdown("---")
-st.markdown("**ReserveShift Tracker** | Self-Contained Alpha v2.0 | Data Updated April 2026")
+st.markdown("**ReserveShift Tracker**")
