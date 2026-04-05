@@ -39,35 +39,33 @@
         .branding { display: flex; align-items: center; gap: 1rem; }
         .logo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
         
-        /* Layout Sections */
         .section-title { font-size: 1.25rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
 
-        /* Top Bar Charts */
+        /* KPI Matrix */
+        .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .kpi-card { background: var(--card); padding: 1.5rem; border-radius: var(--radius); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .kpi-val { font-size: 1.75rem; font-weight: 800; margin-top: 0.5rem; }
+
+        /* Analytics Grid */
         .analytics-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 2rem; }
         .card { background: var(--card); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
         .chart-box { height: 260px; position: relative; }
 
-        /* KPI Matrix */
-        .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        .kpi-card { background: var(--card); padding: 1.5rem; border-radius: var(--radius); border-left: 4px solid var(--primary); }
-        .kpi-val { font-size: 1.75rem; font-weight: 800; margin-top: 0.5rem; }
-
-        /* DDI Multi-Matrix */
+        /* DDI Grid */
         .ddi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        .ddi-card { background: var(--card); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); transition: transform 0.3s ease; }
-        .ddi-card:hover { transform: translateY(-5px); }
+        .ddi-card { background: var(--card); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); }
         .score-circle { width: 100px; height: 100px; border-radius: 50%; border: 8px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
         .score-val { font-size: 1.75rem; font-weight: 800; line-height: 1; }
         .factor-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
         .factor-item { font-size: 0.8rem; font-weight: 600; }
         .bar-bg { height: 6px; background: var(--border); border-radius: 3px; margin-top: 0.4rem; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 3px; }
+        .bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease-out; }
 
         /* Trade Flows */
         .table-wrap { background: var(--card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
         table { width: 100%; border-collapse: collapse; }
-        th { background: #F9FAFB; padding: 1rem; text-align: left; font-size: 0.75rem; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 700; }
-        td { padding: 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; font-weight: 500; }
+        th { background: #F9FAFB; padding: 1.25rem; text-align: left; font-size: 0.75rem; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 700; }
+        td { padding: 1.25rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; font-weight: 500; }
 
         .reveal { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -82,69 +80,69 @@
     <div class="container reveal">
         <header>
             <div class="branding">
-                <div class="logo"><i data-lucide="layout-grid"></i></div>
+                <div class="logo"><i data-lucide="shield-check"></i></div>
                 <div>
-                    <h1 style="font-size: 1.75rem; font-weight: 800;">Strategic Reserve Matrix</h1>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Unified Intelligence Dashboard: Static Cycle April 2026</p>
+                    <h1 style="font-size: 1.75rem; font-weight: 800;">Science-Backed Reserve Matrix</h1>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Verified Data Intelligence: Static Cycle April 2026</p>
                 </div>
             </div>
             <div style="text-align: right;">
-                <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">MONITOR EPOCH</div>
-                <div style="font-weight: 700; font-family: 'Outfit';">14:02 GMT+5:30</div>
+                <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">IMF COFER SNAPSHOT</div>
+                <div style="font-weight: 700; font-family: 'Outfit';">18:04 GMT+5:30</div>
             </div>
         </header>
 
-        <!-- KPI Pulse -->
+        <!-- Dynamic KPIs -->
         <div class="kpi-row">
             <div class="kpi-card" style="border-color: var(--primary);">
-                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="bar-chart"></i> Global USD</div>
+                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="bar-chart"></i> Latest USD Reserve</div>
                 <div class="kpi-val">56.92%</div>
             </div>
             <div class="kpi-card" style="border-color: var(--warning);">
-                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="gem"></i> Top Gold</div>
-                <div class="kpi-val">8,133t</div>
+                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="gem"></i> Top Gold (USA)</div>
+                <div class="kpi-val">8,133.5t</div>
             </div>
             <div class="kpi-card" style="border-color: var(--danger);">
-                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="flame"></i> Listings</div>
+                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="flame"></i> SDN Listings 2025</div>
                 <div class="kpi-val">2,100</div>
             </div>
             <div class="kpi-card" style="border-color: var(--accent);">
-                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="zap"></i> Settlement</div>
-                <div class="kpi-val">32% CNY</div>
+                <div class="section-title" style="font-size: 0.7rem; margin: 0;"><i data-lucide="zap"></i> Settlement Share</div>
+                <div class="kpi-val">32% (CNY/AED)</div>
             </div>
         </div>
 
-        <!-- Major Trend Lines -->
+        <!-- Macro Indicators -->
         <section>
-            <div class="section-title"><i data-lucide="activity"></i> Macro Market Indicators</div>
+            <div class="section-title"><i data-lucide="activity"></i> Macro Market Analytics (April 2026)</div>
             <div class="analytics-grid">
                 <div class="card">
-                    <h3 style="margin-bottom: 1rem;">Reserve Composition Trend</h3>
-                    <div class="chart-box"><canvas id="resLine"></canvas></div>
+                    <h3 style="margin-bottom: 1rem;">Reserve Currency Trend (IMF IFS)</h3>
+                    <div class="chart-box"><canvas id="resChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3 style="margin-bottom: 1rem;">Primary Gold Holders</h3>
-                    <div class="chart-box"><canvas id="goldBar"></canvas></div>
+                    <h3 style="margin-bottom: 1rem;">Global Gold Reserves (tonnes)</h3>
+                    <div class="chart-box"><canvas id="goldChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3 style="margin-bottom: 1rem;">SDN Listing Evolution</h3>
-                    <div class="chart-box"><canvas id="sancBar"></canvas></div>
+                    <h3 style="margin-bottom: 1rem;">US Sanctions Listings (OFAC)</h3>
+                    <div class="chart-box"><canvas id="sancChart"></canvas></div>
                 </div>
             </div>
         </section>
 
-        <!-- Multi-Country Dependency Matrix -->
+        <!-- Static DDI Matrix -->
         <section>
-            <div class="section-title"><i data-lucide="globe"></i> Dollar Dependency Matrix (DDI)</div>
+            <div class="section-title"><i data-lucide="globe"></i> Multi-Country Dollar Dependency Matrix (DDI)</div>
             <div class="ddi-grid">
                 <!-- USA -->
                 <div class="ddi-card">
                     <h2 style="text-align: center; margin-bottom: 1rem;">United States</h2>
-                    <div class="score-circle" style="border-color: var(--primary);"><span class="score-val">100</span></div>
+                    <div class="score-circle" style="border-color: var(--primary);"><span class="score-val">100.0</span></div>
                     <div class="factor-list">
-                        <div class="factor-item">Reserve (50/50)<div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--primary);"></div></div></div>
-                        <div class="factor-item">Gold (25/25)<div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--warning);"></div></div></div>
-                        <div class="factor-item">Sanctions (15/15)<div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--danger);"></div></div></div>
+                        <div class="factor-item">Reserve Share (100%)<div class="bar-bg"><div class="bar-fill" style="width:100%; background:var(--primary);"></div></div></div>
+                        <div class="factor-item">Gold Holdings (8133.5t)<div class="bar-bg"><div class="bar-fill" style="width:100%; background:var(--warning);"></div></div></div>
+                        <div class="factor-item">Sanctions Score (0)<div class="bar-bg"><div class="bar-fill" style="width:0%; background:var(--danger);"></div></div></div>
                     </div>
                 </div>
                 <!-- China -->
@@ -152,9 +150,9 @@
                     <h2 style="text-align: center; margin-bottom: 1rem;">China</h2>
                     <div class="score-circle" style="border-color: var(--secondary);"><span class="score-val" style="color: var(--secondary);">28.2</span></div>
                     <div class="factor-list">
-                        <div class="factor-item">Reserve (1.5/50)<div class="bar-bg"><div class="bar-fill" style="width: 3%; background: var(--primary);"></div></div></div>
-                        <div class="factor-item">Gold (18/25)<div class="bar-bg"><div class="bar-fill" style="width: 72%; background: var(--warning);"></div></div></div>
-                        <div class="factor-item">Sanctions (3.7/15)<div class="bar-bg"><div class="bar-fill" style="width: 25%; background: var(--danger);"></div></div></div>
+                        <div class="factor-item">Reserve Share (~3.0%)<div class="bar-bg"><div class="bar-fill" style="width:6%; background:var(--primary);"></div></div></div>
+                        <div class="factor-item">Gold Change (+0.2%)<div class="bar-bg"><div class="bar-fill" style="width:72%; background:var(--warning);"></div></div></div>
+                        <div class="factor-item">Sanctions Score (500)<div class="bar-bg"><div class="bar-fill" style="width:33%; background:var(--danger);"></div></div></div>
                     </div>
                 </div>
                 <!-- India -->
@@ -162,9 +160,9 @@
                     <h2 style="text-align: center; margin-bottom: 1rem;">India</h2>
                     <div class="score-circle" style="border-color: var(--accent);"><span class="score-val" style="color: var(--accent);">22.1</span></div>
                     <div class="factor-list">
-                        <div class="factor-item">Reserve (0.1/50)<div class="bar-bg"><div class="bar-fill" style="width: 1%; background: var(--primary);"></div></div></div>
-                        <div class="factor-item">Gold (12/25)<div class="bar-bg"><div class="bar-fill" style="width: 48%; background: var(--warning);"></div></div></div>
-                        <div class="factor-item">Sanctions (0.4/15)<div class="bar-bg"><div class="bar-fill" style="width: 3%; background: var(--danger);"></div></div></div>
+                        <div class="factor-item">Reserve Share (~0.2%)<div class="bar-bg"><div class="bar-fill" style="width:1%; background:var(--primary);"></div></div></div>
+                        <div class="factor-item">Gold Change (+0.1%)<div class="bar-bg"><div class="bar-fill" style="width:48%; background:var(--warning);"></div></div></div>
+                        <div class="factor-item">Sanctions Score (50)<div class="bar-bg"><div class="bar-fill" style="width:4%; background:var(--danger);"></div></div></div>
                     </div>
                 </div>
                 <!-- UAE -->
@@ -172,9 +170,9 @@
                     <h2 style="text-align: center; margin-bottom: 1rem;">UAE</h2>
                     <div class="score-circle" style="border-color: var(--warning);"><span class="score-val" style="color: var(--warning);">15.4</span></div>
                     <div class="factor-list">
-                        <div class="factor-item">Reserve (0.02/50)<div class="bar-bg"><div class="bar-fill" style="width: 1%; background: var(--primary);"></div></div></div>
-                        <div class="factor-item">Gold (15.4/25)<div class="bar-bg"><div class="bar-fill" style="width: 62%; background: var(--warning);"></div></div></div>
-                        <div class="factor-item">Sanctions (0.15/15)<div class="bar-bg"><div class="bar-fill" style="width: 1%; background: var(--danger);"></div></div></div>
+                        <div class="factor-item">Reserve Share (~0.05%)<div class="bar-bg"><div class="bar-fill" style="width:1%; background:var(--primary);"></div></div></div>
+                        <div class="factor-item">Gold Holdings (74.6t)<div class="bar-bg"><div class="bar-fill" style="width:62%; background:var(--warning);"></div></div></div>
+                        <div class="factor-item">Sanctions Score (20)<div class="bar-bg"><div class="bar-fill" style="width:2%; background:var(--danger);"></div></div></div>
                     </div>
                 </div>
             </div>
@@ -182,16 +180,16 @@
 
         <!-- Trade Infrastructure -->
         <section style="margin-bottom: 5rem;">
-            <div class="section-title"><i data-lucide="arrow-left-right"></i> Strategic Bilateral Trade Flows</div>
+            <div class="section-title"><i data-lucide="arrow-left-right"></i> Bilateral Trade Settlement Intelligence</div>
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th>Epoch</th><th>Entities</th><th>Currency Pair</th><th>Volume Impact</th></tr></thead>
+                    <thead><tr><th>Date</th><th>Strategic Entities</th><th>Currency Pair</th><th>% of Settlement Flow</th></tr></thead>
                     <tbody>
-                        <tr><td>Nov 2025</td><td>UAE / China</td><td>CNY / AED</td><td>32% of Settlement</td></tr>
-                        <tr><td>Dec 2025</td><td>India / UAE</td><td>INR / AED</td><td>18% of Settlement</td></tr>
-                        <tr><td>Jan 2026</td><td>India / Russia</td><td>INR / CNY</td><td>15% of Settlement</td></tr>
-                        <tr><td>Feb 2026</td><td>India / Bangladesh</td><td>INR / BDT</td><td>08% of Settlement</td></tr>
-                        <tr><td>Mar 2026</td><td>Brazil / China</td><td>BRL / CNY</td><td>25% of Settlement</td></tr>
+                        <tr><td>2025-11-01</td><td>UAE / China</td><td>CNY / AED</td><td>32%</td></tr>
+                        <tr><td>2025-12-15</td><td>India / UAE</td><td>INR / AED</td><td>18%</td></tr>
+                        <tr><td>2026-01-10</td><td>India / Russia</td><td>INR / CNY</td><td>15%</td></tr>
+                        <tr><td>2026-02-20</td><td>India / Bangladesh</td><td>INR / BDT</td><td>08%</td></tr>
+                        <tr><td>2026-03-01</td><td>Brazil / China</td><td>BRL / CNY</td><td>25%</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -201,31 +199,31 @@
     <script>
         lucide.createIcons();
 
-        // Macro Analytics Data
-        const resCtx = document.getElementById('resLine').getContext('2d');
-        new Chart(resCtx, {
+        // Chart Data Update
+        const reserveCtx = document.getElementById('resChart').getContext('2d');
+        new Chart(reserveCtx, {
             type: 'line',
             data: {
-                labels: ['25Q1', '25Q2', '25Q3'],
+                labels: ['2025Q1', '2025Q2', '2025Q3'],
                 datasets: [
-                    { label: 'USD %', data: [57.79, 57.08, 56.92], borderColor: '#6366F1', backgroundColor: 'rgba(99, 102, 241, 0.05)', fill: true, tension: 0.4 },
+                    { label: 'USD %', data: [57.79, 57.08, 56.92], borderColor: '#6366F1', fill: false, tension: 0.4, borderWidth: 3 },
                     { label: 'CNY %', data: [2.00, 1.99, 1.93], borderColor: '#EC4899', borderDash: [5,5], fill: false, tension: 0.4 }
                 ]
             },
             options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 45, max: 60 } } }
         });
 
-        const goldCtx = document.getElementById('goldBar').getContext('2d');
+        const goldCtx = document.getElementById('goldChart').getContext('2d');
         new Chart(goldCtx, {
             type: 'bar',
             data: {
-                labels: ['USA', 'GER', 'ITA', 'FRA', 'RUS', 'CHN'],
-                datasets: [{ data: [8133, 3351, 2451, 2436, 2332, 2264], backgroundColor: '#6366F1', borderRadius: 4 }]
+                labels: ['USA', 'GER', 'ITA', 'FRA', 'RUS', 'CHN', 'SUI', 'JPN', 'IND', 'NLD'],
+                datasets: [{ data: [8133.5, 3351.5, 2451.8, 2436.9, 2332.8, 2264.3, 1040.0, 845.9, 840.8, 612.5], backgroundColor: '#6366F1', borderRadius: 4 }]
             },
             options: { indexAxis: 'y', maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } } }
         });
 
-        const sancCtx = document.getElementById('sancBar').getContext('2d');
+        const sancCtx = document.getElementById('sancChart').getContext('2d');
         new Chart(sancCtx, {
             type: 'bar',
             data: {
