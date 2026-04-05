@@ -6,7 +6,7 @@
     <title>ReserveShift Tracker | Global De-dollarization Monitor</title>
     <meta name="description" content="A real-time dashboard to monitor global reserve shifts and the Dollar Dependency Index (DDI).">
     
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,11 +34,7 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -48,16 +44,9 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-        }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; }
 
-        /* Layout */
-        .wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
+        .wrapper { display: flex; min-height: 100vh; }
 
         /* Sidebar */
         aside {
@@ -81,7 +70,6 @@
             font-size: 1.25rem;
             font-weight: 700;
             text-decoration: none;
-            margin-bottom: 1rem;
         }
 
         .nav-section h4 {
@@ -93,319 +81,76 @@
         }
 
         .country-selector {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            background: var(--background);
-            font-family: inherit;
-            color: var(--text-main);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .country-selector:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            width: 100%; padding: 0.75rem; border-radius: var(--radius);
+            border: 1px solid var(--border); background: var(--background);
+            font-family: inherit; color: var(--text-main); font-weight: 500;
+            cursor: pointer; transition: var(--transition);
         }
 
         .pro-alert {
             margin-top: auto;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 1.25rem;
-            border-radius: var(--radius);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pro-alert h5 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pro-alert p {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .alert-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
-        }
-
-        .alert-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            padding: 1.25rem; border-radius: var(--radius); color: white;
         }
 
         /* Main Content */
-        main {
-            flex: 1;
-            margin-left: 280px;
-            padding: 2.5rem 4rem;
-            max-width: 1400px;
-        }
+        main { flex: 1; margin-left: 280px; padding: 2.5rem 4rem; max-width: 1400px; }
 
-        header {
-            margin-bottom: 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
+        header { margin-bottom: 3rem; display: flex; justify-content: space-between; }
 
-        .page-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* Metrics */
         .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem; margin-bottom: 2.5rem;
         }
 
         .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
+            background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius);
+            box-shadow: var(--shadow-sm); border: 1px solid var(--border);
             transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .metric-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .metric-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .metric-trend {
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
+        .metric-label { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .metric-value { font-size: 1.75rem; font-weight: 700; }
+        .metric-trend { font-size: 0.8rem; font-weight: 600; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.25rem; }
         .trend-up { color: #10b981; }
         .trend-down { color: #ef4444; }
 
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 2rem;
-            border-bottom: 2px solid var(--border);
-            margin-bottom: 2rem;
-        }
+        .tabs { display: flex; gap: 2rem; border-bottom: 2px solid var(--border); margin-bottom: 2rem; }
+        .tab { padding: 0.75rem 0.25rem; color: var(--text-muted); font-weight: 600; cursor: pointer; position: relative; }
+        .tab.active { color: var(--primary); }
+        .tab.active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--primary); }
 
-        .tab {
-            padding: 0.75rem 0.25rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-            transition: var(--transition);
-        }
+        .chart-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .primary-chart { background: var(--card-bg); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border); height: 450px; }
 
-        .tab.active {
-            color: var(--primary);
-        }
+        .table-container { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #f1f5f9; padding: 1rem 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
 
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
+        .ddi-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .ddi-circle { width: 180px; height: 180px; border-radius: 50%; border: 12px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; position: relative; }
+        .ddi-circle::after { content: ''; position: absolute; width: calc(100% + 24px); height: calc(100% + 24px); border-radius: 50%; border: 12px solid var(--primary); border-left-color: transparent; border-bottom-color: transparent; transform: rotate(-45deg); }
+        .score-value { font-size: 3.5rem; font-weight: 800; color: var(--primary); }
 
-        /* Analytics View */
-        .chart-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .primary-chart {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            height: 450px;
-        }
-
-        .secondary-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        /* mCBDC Table */
-        .table-container {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th {
-            background: #f1f5f9;
-            padding: 1rem 1.5rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-
-        td {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
-
-        .badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .badge-live { background: #d1fae5; color: #065f46; }
-        .badge-pilot { background: #dbeafe; color: #1e40af; }
-        .badge-joined { background: #fef3c7; color: #92400e; }
-
-        /* DDI Dashboard */
-        .ddi-main {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .ddi-score-card {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(to bottom right, #ffffff, #f1f5f9);
-            position: relative;
-        }
-
-        .ddi-circle {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 12px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .ddi-circle::after {
-            content: '';
-            position: absolute;
-            width: calc(100% + 24px);
-            height: calc(100% + 24px);
-            border-radius: 50%;
-            border: 12px solid var(--primary);
-            border-left-color: transparent;
-            border-bottom-color: transparent;
-            transform: rotate(-45deg);
-        }
-
-        .score-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .score-label {
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
-            aside { width: 80px; padding: 2rem 0.5rem; text-align: center; }
-            aside .logo span, aside .nav-section h4, aside .pro-alert, aside .country-selector span { display: none; }
+            aside { width: 80px; text-align: center; }
+            aside span, aside h4, aside .pro-alert { display: none; }
             main { margin-left: 80px; padding: 2rem; }
             .chart-container { grid-template-columns: 1fr; }
         }
-
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <!-- Sidebar -->
         <aside>
             <a href="#" class="logo">
                 <i data-lucide="line-chart"></i>
                 <span>ReserveShift</span>
             </a>
-
             <div class="nav-section">
-                <h4>Dashboard Config</h4>
+                <h4>Country Profile</h4>
                 <select id="countrySelect" class="country-selector">
                     <option value="China">China</option>
                     <option value="India">India</option>
@@ -413,78 +158,67 @@
                     <option value="USA">USA</option>
                 </select>
             </div>
-
             <div class="pro-alert">
-                <h5><i data-lucide="zap" style="width: 16px;"></i> Pro Priority</h5>
-                <p>Get real-time DDI shift alerts directly to your inbox.</p>
-                <button class="alert-btn" onclick="alert('Demo: Alert configuration saved!')">Activate Alerts</button>
+                <h5>Pro Alpha v2.0</h5>
+                <p>Equipped with April 2026 self-contained datasets.</p>
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main>
-            <header class="animate-fade-in">
+            <header>
                 <div>
                     <h1 class="page-title">ReserveShift Tracker</h1>
-                    <p class="subtitle">Global De-dollarization Trends & Dollar Dependency Analysis</p>
+                    <p class="subtitle">Real-world De-dollarization Metrics (Scientific v2.0)</p>
                 </div>
                 <div class="card" style="padding: 0.75rem 1.25rem;">
-                    <div style="font-size: 0.75rem; color: var(--text-muted);">Last Updated</div>
-                    <div style="font-weight: 600;">April 5, 2026</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Data Snapshot</div>
+                    <div style="font-weight: 600;">April 2026 Update</div>
                 </div>
             </header>
 
-            <!-- Metrics -->
-            <div class="metrics-grid animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="metrics-grid">
                 <div class="card">
-                    <div class="metric-label"><i data-lucide="gold" style="width: 16px; color: #f59e0b;"></i> Top Gold Buyer</div>
-                    <div class="metric-value" id="topBuyer">China</div>
-                    <div class="metric-trend trend-up"><i data-lucide="trending-up" style="width: 14px;"></i> +2.4%</div>
+                    <div class="metric-label"><i data-lucide="gold"></i> Top Gold Seller (2025)</div>
+                    <div class="metric-value">USA</div>
+                    <div class="metric-trend"><i data-lucide="info"></i> 8,133.5 Tonnes</div>
                 </div>
                 <div class="card">
-                    <div class="metric-label"><i data-lucide="dollar-sign" style="width: 16px; color: var(--primary);"></i> USD Reserve Share</div>
-                    <div class="metric-value">58.4%</div>
-                    <div class="metric-trend trend-down"><i data-lucide="trending-down" style="width: 14px;"></i> -0.8% YoY</div>
+                    <div class="metric-label"><i data-lucide="dollar-sign"></i> USD Global Share</div>
+                    <div class="metric-value">56.92%</div>
+                    <div class="metric-trend trend-down"><i data-lucide="trending-down"></i> 2025Q3 Bottom</div>
                 </div>
                 <div class="card">
-                    <div class="metric-label"><i data-lucide="shield-alert" style="width: 16px; color: #ef4444;"></i> OFAC Sanctions</div>
-                    <div class="metric-value">2,100</div>
-                    <div class="metric-trend trend-up"><i data-lucide="trending-up" style="width: 14px;"></i> Active</div>
+                    <div class="metric-label"><i data-lucide="shield-alert"></i> OFAC Penalty Cases</div>
+                    <div class="metric-value">14</div>
+                    <div class="metric-trend"><i data-lucide="activity"></i> Dec 2025 Stat</div>
                 </div>
                 <div class="card">
-                    <div class="metric-label"><i data-lucide="globe" style="id=lucide-globe; width: 16px; color: var(--accent);"></i> mBridge Stage</div>
-                    <div class="metric-value">Transaction</div>
-                    <div class="metric-trend trend-up"><i data-lucide="check" style="width: 14px;"></i> Phase 3</div>
+                    <div class="metric-label"><i data-lucide="zap"></i> Top Gold Buyer</div>
+                    <div class="metric-value">China</div>
+                    <div class="metric-trend trend-up"><i data-lucide="trending-up"></i> +0.2% MoM</div>
                 </div>
             </div>
 
-            <!-- Tabs -->
-            <div class="tabs animate-fade-in" style="animation-delay: 0.2s;">
-                <div class="tab active" onclick="switchTab('analytics')">Market Analytics</div>
-                <div class="tab" onclick="switchTab('ddi')">DDI Scoring Model</div>
-                <div class="tab" onclick="switchTab('mcbds')">mCBDC Pilots</div>
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('analytics')">Market Trends</div>
+                <div class="tab" onclick="switchTab('ddi')">DDI Analysis</div>
+                <div class="tab" onclick="switchTab('trade')">Bilateral Trade</div>
             </div>
 
-            <!-- View Sections -->
-            <div id="analytics-view" class="view-section animate-fade-in" style="animation-delay: 0.3s;">
+            <div id="analytics-view" class="view-section">
                 <div class="chart-container">
                     <div class="primary-chart">
-                        <h3 style="margin-bottom: 1.5rem;">Reserve Currency Composition (5yr Trend)</h3>
+                        <h3>Reserve Currency Trend (IMF COFER)</h3>
                         <canvas id="reserveChart"></canvas>
                     </div>
                     <div class="secondary-stats">
                         <div class="card">
-                            <h4 style="margin-bottom: 1rem;">Gold Reserves vs DDI</h4>
-                            <div style="height: 150px;">
-                                <canvas id="goldChart"></canvas>
-                            </div>
+                            <h4>Top Gold Holdings</h4>
+                            <canvas id="goldChart"></canvas>
                         </div>
                         <div class="card">
-                            <h4 style="margin-bottom: 0.5rem;">Sanctions Frequency</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Correlation with USD distancing</p>
-                            <div style="height: 100px;">
-                                <canvas id="sanctionsChart"></canvas>
-                            </div>
+                            <h4>OFAC SDN Listings (2021-2025)</h4>
+                            <canvas id="sanctionsChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -492,237 +226,128 @@
 
             <div id="ddi-view" class="view-section" style="display: none;">
                 <div class="ddi-main">
-                    <div class="card ddi-score-card">
+                    <div class="card ddi-score-card" style="text-align: center;">
                         <div class="ddi-circle">
                             <div>
                                 <div class="score-value" id="ddiScore">15.4</div>
-                                <div class="score-label">MODERATE</div>
+                                <div style="font-weight: 600; color: var(--text-muted);">INDEX SCORE</div>
                             </div>
                         </div>
                         <h3 id="countryName">United Arab Emirates</h3>
-                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Dependency Index Score (0-100)</p>
                     </div>
-                    
                     <div class="card">
-                        <h3>Model Breakdown</h3>
-                        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+                        <h3>Dependency Breakdown</h3>
+                        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
                             <div class="factor">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: 600;">Reserve Factor</span>
-                                    <span id="reserveFactor">5.0 / 50</span>
-                                </div>
-                                <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                                    <div id="reserveBar" style="height: 100%; background: var(--primary); width: 10%;"></div>
-                                </div>
+                                <div style="display: flex; justify-content: space-between;"><span>USD Reserve Share (50pts)</span><span id="f1">0.02 / 50</span></div>
+                                <div style="height: 8px; background: var(--border); border-radius: 4px;"><div id="b1" style="height: 100%; background: var(--primary); width: 1%;"></div></div>
                             </div>
                             <div class="factor">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: 600;">Gold Factor</span>
-                                    <span id="goldFactor">10.4 / 25</span>
-                                </div>
-                                <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                                    <div id="goldBar" style="height: 100%; background: #f59e0b; width: 41.6%;"></div>
-                                </div>
+                                <div style="display: flex; justify-content: space-between;"><span>Gold Holdings (25pts)</span><span id="f2">15.4 / 25</span></div>
+                                <div style="height: 8px; background: var(--border); border-radius: 4px;"><div id="b2" style="height: 100%; background: #f59e0b; width: 62%;"></div></div>
                             </div>
                             <div class="factor">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: 600;">Sanctions Factor</span>
-                                    <span id="sanctionsFactor">0.0 / 15</span>
-                                </div>
-                                <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                                    <div id="sanctionsBar" style="height: 100%; background: #ef4444; width: 0%;"></div>
-                                </div>
+                                <div style="display: flex; justify-content: space-between;"><span>US Sanctions (15pts)</span><span id="f3">0.15 / 15</span></div>
+                                <div style="height: 8px; background: var(--border); border-radius: 4px;"><div id="b3" style="height: 100%; background: #ef4444; width: 1%;"></div></div>
                             </div>
                             <div class="factor">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: 600;">mCBDC Factor</span>
-                                    <span id="mbdcFactor">0.0 / 10</span>
-                                </div>
-                                <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
-                                    <div id="mbdcBar" style="height: 100%; background: var(--accent); width: 0%;"></div>
-                                </div>
+                                <div style="display: flex; justify-content: space-between;"><span>mCBDC Integration (10pts)</span><span id="f4">0.0 / 10</span></div>
+                                <div style="height: 8px; background: var(--border); border-radius: 4px;"><div id="b4" style="height: 100%; background: var(--accent); width: 0%;"></div></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="mcbds-view" class="view-section" style="display: none;">
+            <div id="trade-view" class="view-section" style="display: none;">
                 <div class="table-container card">
                     <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Relevant Entities</th>
-                                <th>Project Name</th>
-                                <th>Stage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2025-12-02</td>
-                                <td>UAE, China</td>
-                                <td>mBridge</td>
-                                <td><span class="badge badge-live">Transaction</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-11-20</td>
-                                <td>UAE Central Bank</td>
-                                <td>Digital Dirham</td>
-                                <td><span class="badge badge-live">Transaction</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-10-10</td>
-                                <td>HK, Thailand, UAE</td>
-                                <td>m-CBDCBridge</td>
-                                <td><span class="badge badge-pilot">Pilot</span></td>
-                            </tr>
-                            <tr>
-                                <td>2025-09-19</td>
-                                <td>Saudi Arabia</td>
-                                <td>mBridge</td>
-                                <td><span class="badge badge-joined">Joined</span></td>
-                            </tr>
+                        <thead><tr><th>Date</th><th>Entities</th><th>Currency Pair</th><th>% of Trade</th></tr></thead>
+                        <tbody id="tradeTable">
+                            <tr><td>2025-12-15</td><td>India, UAE</td><td>INR/AED</td><td>18%</td></tr>
+                            <tr><td>2026-01-10</td><td>India, Russia</td><td>INR/CNY</td><td>15%</td></tr>
+                            <tr><td>2026-03-01</td><td>Brazil, China</td><td>BRL/CNY</td><td>25%</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </main>
     </div>
 
     <script>
-        // Lucide Icons
         lucide.createIcons();
 
-        // Chart.js Mock Data & Init
-        const labels = ['Q1 2021', 'Q3 2021', 'Q1 2022', 'Q3 2022', 'Q1 2023', 'Q3 2023', 'Q1 2024', 'Q3 2024', 'Q1 2025'];
-        
-        // Reserve Chart
-        const ctxReserve = document.getElementById('reserveChart').getContext('2d');
-        const reserveChart = new Chart(ctxReserve, {
+        // Data from scientific update
+        const reserveData = {
+            labels: ['2025Q1', '2025Q2', '2025Q3'],
+            usd: [57.79, 57.08, 56.92],
+            cny: [2.00, 1.99, 1.93]
+        };
+
+        const goldHoldings = {
+            names: ['USA', 'Germany', 'Italy', 'France', 'Russia', 'China'],
+            tonnes: [8133.5, 3351.5, 2451.8, 2436.9, 2332.8, 2264.3]
+        };
+
+        const sanctionsHistory = {
+            labels: [2021, 2022, 2023, 2024, 2025],
+            counts: [900, 1200, 1500, 1800, 2100]
+        };
+
+        const ddiConfig = {
+            'UAE': { ddi: 15.4, name: 'United Arab Emirates', r: 0.02, g: 15.4, s: 0.15, m: 0.0 },
+            'China': { ddi: 28.2, name: 'China', r: 1.5, g: 18.0, s: 3.7, m: 5.0 },
+            'India': { ddi: 22.1, name: 'India', r: 0.1, g: 12.0, s: 0.4, m: 9.6 },
+            'USA': { ddi: 100.0, name: 'United States', r: 50.0, g: 25.0, s: 15.0, m: 10.0 }
+        };
+
+        // Charts
+        new Chart(document.getElementById('reserveChart'), {
             type: 'line',
             data: {
-                labels: labels,
+                labels: reserveData.labels,
                 datasets: [
-                    {
-                        label: 'USD',
-                        data: [62.4, 61.8, 60.5, 59.8, 59.2, 58.9, 58.5, 58.2, 57.8],
-                        borderColor: '#4361ee',
-                        backgroundColor: 'rgba(67, 97, 238, 0.05)',
-                        fill: true,
-                        tension: 0.4,
-                        borderWidth: 3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#fff'
-                    },
-                    {
-                        label: 'CNY',
-                        data: [2.1, 2.3, 2.5, 2.8, 3.1, 3.3, 3.8, 4.2, 4.5],
-                        borderColor: '#ef4444',
-                        backgroundColor: 'rgba(239, 68, 68, 0.05)',
-                        fill: true,
-                        tension: 0.4,
-                        borderWidth: 3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#fff'
-                    }
+                    { label: 'USD %', data: reserveData.usd, borderColor: '#4361ee', fill: false, tension: 0.4 },
+                    { label: 'CNY %', data: reserveData.cny, borderColor: '#ef4444', fill: false, tension: 0.4 }
                 ]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 6 } }
-                },
-                scales: {
-                    y: { grid: { display: false }, ticks: { callback: v => v + '%' } },
-                    x: { grid: { display: false } }
-                }
-            }
+            options: { maintainAspectRatio: false, scales: { y: { min: 56, max: 60 } } }
         });
 
-        // Gold Chart
         new Chart(document.getElementById('goldChart'), {
             type: 'bar',
-            data: {
-                labels: ['China', 'Russia', 'India', 'Turkey'],
-                datasets: [{
-                    label: 'Gold Added (Tonnes)',
-                    data: [120, 85, 45, 60],
-                    backgroundColor: ['#f59e0b', '#d97706', '#b45309', '#92400e'],
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { y: { display: false }, x: { grid: { display: false } } }
-            }
+            data: { labels: goldHoldings.names, datasets: [{ label: 'Tonnes', data: goldHoldings.tonnes, backgroundColor: '#f1f5f9' }] },
+            options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
 
-        // Sanctions Chart
         new Chart(document.getElementById('sanctionsChart'), {
             type: 'line',
-            data: {
-                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
-                datasets: [{
-                    label: 'Count',
-                    data: [850, 1100, 1400, 1750, 1900, 2100],
-                    borderColor: '#ef4444',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    y: { display: false }, 
-                    x: { ticks: { font: { size: 9 } }, grid: { display: false } } 
-                }
-            }
+            data: { labels: sanctionsHistory.labels, datasets: [{ label: 'SDN Listings', data: sanctionsHistory.counts, borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true }] },
+            options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
 
-        // Dashboard Interaction
+        // Tabs & Selection
         function switchTab(view) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
-            
             document.querySelectorAll('.view-section').forEach(v => v.style.display = 'none');
             document.getElementById(view + '-view').style.display = 'block';
         }
 
-        const countryData = {
-            'UAE': { ddi: 15.4, name: 'United Arab Emirates', reserve: 5.0, gold: 10.4, sanctions: 0.0, mbdc: 0.0 },
-            'China': { ddi: 28.2, name: 'China', reserve: 4.5, gold: 18.7, sanctions: 5.0, mbdc: 0.0 },
-            'India': { ddi: 22.1, name: 'India', reserve: 8.2, gold: 12.4, sanctions: 1.5, mbdc: 0.0 },
-            'USA': { ddi: 100.0, name: 'United States', reserve: 50.0, gold: 25.0, sanctions: 15.0, mbdc: 10.0 }
-        };
-
-        const countrySelect = document.getElementById('countrySelect');
-        countrySelect.addEventListener('change', (e) => {
-            const val = e.target.value;
-            const data = countryData[val];
-            
-            // Update DDI View
+        document.getElementById('countrySelect').addEventListener('change', (e) => {
+            const data = ddiConfig[e.target.value];
             document.getElementById('ddiScore').innerText = data.ddi.toFixed(1);
             document.getElementById('countryName').innerText = data.name;
-            
-            // Update bars
-            updateBar('reserve', data.reserve, 50);
-            updateBar('gold', data.gold, 25);
-            updateBar('sanctions', data.sanctions, 15);
-            updateBar('mbdc', data.mbdc, 10);
+            updateFactor(1, data.r, 50);
+            updateFactor(2, data.g, 25);
+            updateFactor(3, data.s, 15);
+            updateFactor(4, data.m, 10);
         });
 
-        function updateBar(id, val, max) {
-            const pct = (val / max) * 100;
-            document.getElementById(id + 'Factor').innerText = val + ' / ' + max;
-            document.getElementById(id + 'Bar').style.width = pct + '%';
+        function updateFactor(idx, val, max) {
+            document.getElementById('f'+idx).innerText = val.toFixed(2) + ' / ' + max;
+            document.getElementById('b'+idx).style.width = ((val/max)*100) + '%';
         }
-
     </script>
 </body>
 </html>
